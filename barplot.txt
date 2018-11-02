@@ -1,0 +1,8 @@
+import pandas
+import numpy
+from plotnine import *
+data=read.csv('data.txt')
+west=data[data['region'].str.contains('west')]
+north=data[data['region'].str.contains('north')]
+south=data[data['region'].str.contains('south')]
+east=data[data['region'].str.contains('east')]
