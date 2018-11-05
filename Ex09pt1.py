@@ -9,8 +9,6 @@ Exercise09
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
-from plotnine import *
-
 
 # data loaded into a data frame
 data=pandas.read_csv("incomevSAT.txt", sep="\t")
