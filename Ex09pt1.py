@@ -6,27 +6,24 @@ Exercise09
 
 @author: Patricia
 """
-
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
-
-# Part 1 Analysis of Sports Teaam data
 
 # data loaded into a data frame
 data=pandas.read_csv("incomevSAT.txt", sep="\t")
 
 x = data.iloc[:,0] # sets x equal to income column
-yR = data.iloc[:,1]
-yM = data.iloc[:,2]
-yW = data.iloc[:,3]
+yR = data.iloc[:,1] # gets SAT Reading scores
+yM = data.iloc[:,2] # gets SAT Math scores
+yW = data.iloc[:,3] # gets SAT Writing scores
 yC = yR + yM + yW # cumulative SAT
-area = np.pi*3
-colors = (0,0,0)
 
-
-plt.scatter(x, yC, s=area, c=colors, alpha=0.5)
-plt.title('Family Income vs SAT')
+plt.scatter(x, yC)
+plt.title('Family Income vs. SAT')
 plt.xlabel('Family Income')
 plt.ylabel('SAT score')
+z = np.polyfit(x,yC,1) # finds the linear line of best fit
+p = np.poly1d(z)
+plt.plot(x,p(x),"r--")
 plt.show()
