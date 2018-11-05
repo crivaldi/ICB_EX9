@@ -15,7 +15,7 @@ from plotnine import *
 # data loaded into a data frame
 data=pandas.read_csv("data.txt", sep=",")
 
-# pt 1: make barplot with mean of the four populations
+# pt 1: make barplot with mean of the four populations using matplotlib
 north = 0
 north_count = 0
 south = 0
@@ -60,7 +60,7 @@ ax.set_xticklabels(('North', 'South', 'East', 'West'))
 fig.tight_layout()
 plt.show()
 
-# part 2: a scatterplot of the data
+# part 2: a scatterplot of the data using plotnine
 scatter = ggplot(data,aes(x="region",y="observations"))
 print(scatter+geom_point(alpha=0.1)+theme_classic())
 
