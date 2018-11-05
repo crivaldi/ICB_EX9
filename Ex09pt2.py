@@ -15,14 +15,47 @@ import numpy as np
 data=pandas.read_csv("data.txt", sep=",")
 
 # pt 1: make barplot with mean of the four populations
+north = 0
+south = 0
+east = 0
+west = 0
 region = 'none'
 for x in range(0,len(data)):
     region = str(data.iloc[x,0])
     if region == 'north':
-        print('north')
+        north = north + int(data.iloc[x,1])
     elif region == 'south':
-        print('south')
+        south = south + int(data.iloc[x,1])
     elif region == 'east': 
-        print('east')
+        east = east + int(data.iloc[x,1])
     elif region == 'west':
-        print('west')
+        west = west + int(data.iloc[x,1])
+
+means = [north, south, east, west]
+
+opacity = 0.8
+n_groups = 4
+fig, ax = plt.subplots()
+
+index = np.arange(n_groups)
+bar_width = 0.35
+
+rects1 = ax.bar(index, means, bar_width, alpha = opacity, color='g')
+
+ax.set_xlabel('Region')
+ax.set_ylabel('Mean')
+ax.set_title('Mean Observations per Region')
+ax.set_xticks(index)
+ax.set_xticklabels(('North', 'South', 'East', 'West'))
+fig.tight_layout()
+plt.show()
+
+
+
+
+
+
+
+
+
+
