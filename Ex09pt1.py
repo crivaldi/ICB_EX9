@@ -9,6 +9,8 @@ Exercise09
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
+from plotnine import *
+
 
 # data loaded into a data frame
 data=pandas.read_csv("incomevSAT.txt", sep="\t")
@@ -21,9 +23,10 @@ yC = yR + yM + yW # cumulative SAT
 
 plt.scatter(x, yC)
 plt.title('Family Income vs. SAT')
-plt.xlabel('Family Income')
-plt.ylabel('SAT score')
+plt.xlabel('Family Income') # x axis label
+plt.ylabel('SAT score') # y axis label
 z = np.polyfit(x,yC,1) # finds the linear line of best fit
 p = np.poly1d(z)
 plt.plot(x,p(x),"r--")
 plt.show()
+
