@@ -1,0 +1,7 @@
+import pandas
+import numpy
+from plotnine import *
+data=pandas.read_csv('Poverty-Murder-data')
+a=ggplot(data,aes(x='Poverty Rate',y='Murder Rate'))
+aplot=a+geom_point()+geom_smooth()
+aplot.save(filename='poverty-murder-plot1.pdf')
