@@ -14,7 +14,7 @@ a+xlab("Years of School")+ylab("Wage")+stat_smooth(method="lm")
 
 #Anser to number 2 after converting data.txt into a csv manually
 cd ../ICB_EX9
-data=pd.read_csv("data.csv")
+data=pd.read_table("data.txt", header=0, sep ",")
 data.shape
 ! pip install scikit-misc
 #Barplot of means of data
