@@ -1,0 +1,22 @@
+# to create barplot
+import pandas
+import numpy
+from plotnine import *
+data=pandas.read_csv('data.txt')
+west=data[data['region'].str.contains('west')]
+north=data[data['region'].str.contains('north')]
+south=data[data['region'].str.contains('south')]
+east=data[data['region'].str.contains('east')]
+meandata=[['north',north['observations'].mean()],['south',south['observations'].mean()],['east',east['observations'].mean()],['west',west['observations'].mean()]]
+meandata2=pandas.DataFrame(meandata,columns=['region','observations'])
+a=ggplot(meandata2,aes(x='region',y='observations'))
+aplot=a+geom_bar(stat='identity')
+aplot.save(filename='barplot.pdf')
+#to create scatterplot
+a=ggplot(data,aes(x='region',y='observations'))
+aplot=a+geom_jitter()
+aplot.save(filename='scatterplot.pdf')
+
+# The bar plot makes it appear like the regions have very similar data
+# however the scatterplot shows that there is significantly variable distribution of data between the regions
+
