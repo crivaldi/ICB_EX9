@@ -4,13 +4,16 @@ Created on Wed Nov  7 22:37:17 2018
 
 @author: Alicia
 """
-
-#Question 2
-
 import numpy
 import pandas
 from plotnine import *
+#Question 1 - sample data for Gray Kangaroos
+data=pandas.read_csv("GrayKangaroo.txt",sep="\t",header=0)
+data.head(5)
+a=ggplot(data,aes(x="Nasal Length",y="Nasal Width"))
+a+geom_point()+coord_cartesian()+theme_classic()+stat_smooth(method="lm")
 
+#Question 2
 data=pandas.read_csv("data.txt",sep=",",header=0)
 data.head(5)
 df=ggplot(data)+theme_classic()+xlab("region")+ylab("observations")
