@@ -1,0 +1,20 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Nov  7 20:31:47 2018
+
+@author: atatarian
+"""
+
+import numpy
+import pandas
+from plotnine import *
+
+sat=pandas.read_csv("SAT.txt",sep="\t",header=0)
+sat.shape
+
+print (sat)
+
+a=ggplot(sat,aes(x="GPA",y="SAT-Score"))+theme_classic()+geom_point()+coord_cartesian()
+
+print a+xlab("GPA")+ylab("SAT-Score")+stat_smooth(method="lm")
