@@ -1,0 +1,34 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Nov  7 20:49:52 2018
+
+@author: atatarian
+"""
+
+import numpy
+import pandas
+from plotnine import *
+
+data=pandas.read_csv("data.txt",sep=",",header=0)
+data.shape
+
+
+#bar plot
+
+
+d=ggplot(data)+theme_classic()+xlab("region")+ylab("observations")
+
+print d+geom_bar(aes(x="factor(region)",y="observations"),stat="summary",fun_y=numpy.mean)
+
+#scatter plot
+
+a=ggplot(data,aes(x="region",y="observations"))+theme_classic()+geom_jitter()
+
+print a
+
+
+# The scatter plots tell different stories, most notably for the north and
+# south regions. While the means are similar, as shown by the bar plot, the
+# spreads, or distributions, of the data are different, as shown by the scatter
+# plot.
