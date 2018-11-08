@@ -25,7 +25,7 @@ east_count = 0
 west = 0
 west_count = 0
 region = 'none'
-# iterate through data frame to get sum of north
+# iterate through data frame to get sum of north,south,east,west and their # observations
 for x in range(0,len(data)):
     region = str(data.iloc[x,0])
     if region == 'north':
@@ -40,25 +40,25 @@ for x in range(0,len(data)):
     elif region == 'west':
         west = west + int(data.iloc[x,1])
         west_count = west_count + 1
-
+# find mean of each area using sum and count
 means = [north/north_count, south/south_count, east/east_count, west/west_count]
 
-opacity = 0.8
-n_groups = 4
-fig, ax = plt.subplots()
+opacity = 0.8 # a color strength I liked
+n_groups = 4 # 4 bars
+fig, ax = plt.subplots() # bar graph is named ax
 
 index = np.arange(n_groups)
-bar_width = 0.35
+bar_width = 0.35 # width of bar
 
-rects = ax.bar(index, means, bar_width, alpha = opacity, color='g')
+rects = ax.bar(index, means, bar_width, alpha = opacity, color='g') #graph
 
-ax.set_xlabel('Region')
-ax.set_ylabel('Mean')
-ax.set_title('Mean Observations per Region')
-ax.set_xticks(index)
-ax.set_xticklabels(('North', 'South', 'East', 'West'))
-fig.tight_layout()
-plt.show()
+ax.set_xlabel('Region')#x axis label
+ax.set_ylabel('Mean')# y axis label
+ax.set_title('Mean Observations per Region')# title
+ax.set_xticks(index) # middle of each bar
+ax.set_xticklabels(('North', 'South', 'East', 'West'))# labels to x axis
+fig.tight_layout()# nice layout
+plt.show() #display
 
 # part 2: a scatterplot of the data using plotnine
 scatter = ggplot(data,aes(x="region",y="observations"))
