@@ -90,3 +90,4 @@ mpl.bar(pos,ymeans,color='blue',edgecolor='black')
 from plotnine import *
 p = ggplot(data2, aes('region','observations'))
 p+geom_jitter()
+p.draw()
